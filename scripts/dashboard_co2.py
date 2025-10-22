@@ -12,7 +12,7 @@ if not path.exists():
 
 df = pd.read_csv(path)
 
-# --- FILTRAGE : ne garder que les vrais pays (codes ISO à 3 lettres) et exclure les agrégats/regions
+# FILTRAGE : ne garder que les vrais pays (codes ISO à 3 lettres) et exclure les agrégats/regions
 a_exclure = [
     "World", "IDA & IBRD total", "IBRD only", "IDA total", "Low & middle income", "High income",
     "Middle income", "Upper middle income", "Lower middle income", "OECD members", "Non-OECD members",
@@ -229,7 +229,7 @@ fig_8020.update_layout(
     yaxis_tickfont=dict(size=11),
 )
 
-# --- ESTIMATIONS / PROJECTIONS FUTURES ---
+#  ESTIMATIONS / PROJECTIONS FUTURES 
 horizon = 2040
 annees_existantes = emissions_par_annee["Année"].astype(int)
 emissions_existantes = emissions_par_annee["Émissions totales (millions de tonnes)"]
@@ -274,7 +274,7 @@ fig_projection.update_layout(
     yaxis_tickfont=dict(size=11),
 )
 
-# --- PROJECTIONS PAR PAYS (corrigé pour éviter les DataFrames vides) ---
+#  PROJECTIONS PAR PAYS (corrigé pour éviter les DataFrames vides) 
 df_cagr_pays = df_pays[["Country Name", "1990", "2023"]].copy()
 
 # Remplacer les valeurs manquantes de 1990 par la moyenne mondiale
@@ -310,7 +310,7 @@ variation_pct = ((emission_2023 - emission_1990) / emission_1990) * 100
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 app.title = "Analyse des émissions de CO₂ — Thème clair"
 
-# --- Fonctions d'insights (à placer juste après la section KPI, avant le layout)
+#  Fonctions d'insights (à placer juste après la section KPI, avant le layout)
 def generate_insights_global():
     variation_text = f"Depuis 1990, les émissions mondiales de CO₂ ont {'augmenté' if variation_pct > 0 else 'diminué'} de {abs(variation_pct):.1f} %."
     total_text = f"En 2023, elles atteignent {total_mondial_2023_fmt}."
@@ -546,7 +546,7 @@ app.layout = dbc.Container([
                         width=12
                     )
                 ]),
-                # --- Ajout du Top 10 projection dynamique et insight automatique ---
+                #  Ajout du Top 10 projection dynamique et insight automatique 
                 dbc.Row([
                     dbc.Col([
                         html.Label("Horizon :", className="fw-bold me-2"),
@@ -590,7 +590,7 @@ app.layout = dbc.Container([
         dcc.Tab(label="Facteurs explicatifs & géopolitique", children=[
             dbc.Container([
                 html.Br(),
-                # --- Introduction ---
+                #  Introduction 
                 dbc.Row([
                     dbc.Col(
                         html.Div(
@@ -612,7 +612,7 @@ app.layout = dbc.Container([
                     )
                 ], className="mb-4"),
 
-                # --- Facteurs économiques & énergétiques ---
+                #  Facteurs économiques & énergétiques 
                 dbc.Row([
                     dbc.Col(dbc.Card([
                         dbc.CardBody([
@@ -640,7 +640,7 @@ app.layout = dbc.Container([
                     ], color="light", style={"border": "1px solid #dee2e6", "borderRadius": "0.5rem", "height": "100%"}), width=4),
                 ], className="mb-4"),
 
-                # --- Timeline géopolitique (événements majeurs) ---
+                #  Timeline géopolitique (événements majeurs) 
                 dbc.Row([
                     dbc.Col(html.H5("Événements géopolitiques et énergétiques marquants", className="mb-3", style={"color": "#0056b3"}), width=12)
                 ]),
@@ -691,7 +691,7 @@ app.layout = dbc.Container([
                         ), width=12)
                 ], className="mb-4"),
 
-                # --- Scénarios et politiques ---
+                #  Scénarios et politiques 
                 dbc.Row([
                     dbc.Col(dbc.Card([
                         dbc.CardBody([
@@ -711,7 +711,7 @@ app.layout = dbc.Container([
                     ], color="light", style={"border": "1px solid #dee2e6", "borderRadius": "0.5rem", "height": "100%"}), width=6),
                 ], className="mb-4"),
 
-                # --- Conclusion ---
+                #  Conclusion 
                 dbc.Row([
                     dbc.Col(
                         html.Div(
@@ -738,7 +738,7 @@ app.layout = dbc.Container([
 ], fluid=True)
 
 
-# --- Helper functions for dynamic indicator computation ---
+#  Helper functions for dynamic indicator computation 
 def compute_emissions_per_capita(annee):
     if "Population" in df_pays.columns:
         return df_pays[annee] / df_pays["Population"]
@@ -844,7 +844,7 @@ def export_kpi_to_csv(n_clicks):
     buffer.seek(0)
     return dict(content=buffer.getvalue(), filename="indicateurs_CO2.csv")
 
-# --- Callback Top 10 projection dynamique et insight automatique ---
+#  Callback Top 10 projection dynamique et insight automatique 
 @app.callback(
     Output("graph-top-projection", "figure"),
     Output("insight-projection", "children"),
