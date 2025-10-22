@@ -10,13 +10,15 @@
 ##  Objectif du projet
 
 Ce projet a pour but d’**analyser et de visualiser l’évolution des émissions mondiales de CO₂** entre 1970 et 2023 à travers un **tableau de bord interactif professionnel** développé en **Python (Dash, Plotly, Pandas)**.  
-Il inclut également des **projections futures (2030–2050)** basées sur le **taux de croissance annuel composé (CAGR)** et une **analyse géopolitique** contextualisant les dynamiques d’émissions.
+Il inclut également des **projections futures (2030–2050)** basées sur le **taux de croissance annuel composé (CAGR)** et une **analyse géopolitique** des dynamiques d’émissions.
 
 ---
 
 ##  Contexte
 
-Réalisé dans le cadre du **Master 2 Big Data, Analyse et Business Intelligence** à l’Université **Sorbonne Paris Nord**, ce projet illustre un **pipeline complet de data science** :
+Projet réalisé dans le cadre du **Master 2 Big Data, Analyse et Business Intelligence** à l’Université **Sorbonne Paris Nord**.  
+Il illustre un pipeline complet de data science :  
+
 1. **ETL (Extraction, Transformation, Chargement)** des données CO₂ issues de la Banque mondiale  
 2. **Nettoyage et contrôle qualité** des données  
 3. **Analyse et visualisation** via un dashboard multi-onglets  
@@ -36,6 +38,14 @@ dashboard_co2_project/
 ├── scripts/
 │   ├── CO2.py                      # Script de nettoyage et préparation (ETL)
 │   └── dashboard_co2.py            # Tableau de bord interactif (Dash)
+│
+├── images/                         # Captures d’écran pour la documentation
+│   ├── vue_globale.png
+│   ├── vue_pays_1982.png
+│   ├── vue_pays_2020.png
+│   ├── projection_2040.png
+│   ├── projection_2050.png
+│   └── geopolitique.png
 │
 ├── requirements.txt                # Dépendances Python
 └── README.md                       # Documentation du projet
