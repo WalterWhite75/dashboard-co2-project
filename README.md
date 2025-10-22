@@ -1,4 +1,4 @@
-# 🌍 Dashboard CO₂ — Analyse mondiale des émissions (1970–2023)
+#  Dashboard CO₂ — Analyse mondiale des émissions (1970–2023)
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)](https://www.python.org/)
 [![Plotly Dash](https://img.shields.io/badge/Dash-Plotly-brightgreen?logo=plotly)](https://plotly.com/dash/)
